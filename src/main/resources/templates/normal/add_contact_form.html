@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+th:replace="normal/base::layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Add contact</title>
+</head>
+
+<body>
+	<section>
+	
+	<div class="card mr-3 ml-3">
+		
+		<div class="card-body">
+			
+			<h1 class="text-center">Add Contact</h1>
+			
+			<div class="container-fluid mt-1">
+				
+				<div class="row">
+					
+					<div class="col-md-8 offset-md-2">
+						
+						<form action="#"
+							th:object="${contact}"
+							enctype="multipart/form-data"
+							method="POST"
+							th:action="@{/user/process-contact}"
+							class="mt-2"
+						
+						>
+						
+						<!-- First Name -->
+						<!-- for icon -->
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fa fa-plus"></i>
+								</div>
+							</div>
+							
+							<!-- for detail -->
+							<input
+								type="text"
+								id="name"
+								name="name"
+								placeholder="Enter Name"
+								class="form-control"
+								Required
+							/>
+							
+						</div>
+						
+						
+						<!-- Second Name -->
+						<!-- for icon -->
+						<div class="input-group mt-3">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fas fa-user-alt"></i>
+								</div>
+							</div>
+							
+							<!-- for detail -->
+							<input
+								type="text"
+								id="secondName"
+								name="secondName"
+								placeholder="Enter Nick Name"
+								class="form-control"
+							/>
+							
+						</div>
+						
+						<!-- Phone Field -->
+						<!-- for icon -->
+						<div class="input-group mt-3">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fa fa-phone"></i>
+								</div>
+							</div>
+							
+							<!-- for detail -->
+							<input
+								type="tel"
+								id="phone"
+								name="phone"
+								class="form-control"
+								placeholder="Enter your 10 digit number"
+								Required
+							/>
+							
+						</div>
+						
+						<!-- Email field -->
+						<!-- for icon -->
+						<div class="input-group mt-3">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									@
+								</div>
+							</div>
+							
+							<!-- for detail -->
+							<input
+								type="email"
+								id="email"
+								name="email"
+								placeholder="Enter email Name"
+								class="form-control"
+							/>
+							
+						</div>
+						
+						<!-- Work Field -->
+						<!-- for icon -->
+						<div class="input-group mt-3">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fa fa-briefcase"></i>
+								</div>
+							</div>
+							
+							<!-- for detail -->
+							<input
+								type="text"
+								id="work"
+								name="work"
+								placeholder="Enter work here"
+								class="form-control"
+							/>
+							
+						</div>
+						
+						<!-- Description field -->
+						<div class="form-group mt-3">
+							<textarea placeholder="Enter contact description" name="description" id="mytextarea" rows="6" class="form-control"></textarea>
+						</div>
+						
+						
+						<!-- Image Filed -->
+						<div class="custom-file">
+							<input
+							type="file"
+							name="profileImage"
+							>
+						</div>
+						
+						<!-- Save Contact field -->
+						<div class="container text-center">
+
+							<button type="submit" class="btn btn-outline-primary ">
+								Save Contact
+							</button>
+						</div>
+						
+						</form>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+	<script>
+      tinymce.init({
+        selector: '#mytextarea'
+      });
+    </script>
+    
+    <!-- for highlighting the specific sidebar icon on which we are currently at -->
+		<script>
+			$(document).ready(() => {
+				$(".item").removeClass("active");   // phle sbse hta denge 
+				$("#add-link").addClass("active"); // phir jis page pe honge currently usko highlight kar denge.
+													// e.g: here = 'home'
+			});
+		</script>
+	
+	</section>
+</body>
+
+</html>

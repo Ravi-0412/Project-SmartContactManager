@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Settings</title>
+</head>
+
+<body>
+	<section>
+		
+		<div class="container">
+			
+			<div class="row">
+				
+				<div class="col-md-12">
+					
+					<div class="card">
+						
+						<div class="card-body">
+							
+							<h3 class="mb-3">Change Password</h3>
+							
+							<form th:action="@{/user/change-password}" method="post">
+								
+								<!--old password field-->
+								
+								<div class="form-group">
+									
+									<input name="oldPassword" type="text" class="form-control" placeholder="Enter old password" />
+									
+								</div>
+								
+								<!--New password field-->
+								
+								<div class="form-group">
+									
+									<input name="newPassword" type="text" class="form-control" placeholder="Enter new password" />
+									
+								</div>
+								
+								<div class="container text-center">
+									
+									<button type="submit" class="btn btn-success">Change</button>
+									<button type="reset" class="btn btn-warning">Reset</button>
+										
+								</div>
+								
+							</form>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- for highlighting the specific sidebar icon on which we are currently at -->
+		<script>
+			$(document).ready(() => {
+				$(".item").removeClass("active");   // phle sbse hta denge 
+				$("#settings-link").addClass("active"); // phir jis page pe honge currently usko highlight kar denge.
+													// e.g: here = 'home'
+			});
+		</script>
+
+
+	</section>
+</body>
+
+</html>

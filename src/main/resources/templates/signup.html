@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>This is home page</title>
+</head>
+
+<body>
+	<section>
+		<div class="container">
+			<div class="row">
+				<!-- 12 grid me '6' beech me and 3 left right chuta rhega ' -->
+				<div class="col-md-6 offset-md-3">
+			
+					<div class="my-card ">
+						
+						<!-- showing message only if there is message from server side
+						for this apply 'if' on 'session.message' , type ke session ka type use karega-->
+						
+						<div th:if="${session.message}" th:classappend="${session.message.type}"   class="alert " role="alert">
+  							<p class="text-center" th:text="${session.message.content}" ></p>
+  							
+  							<!-- ek hi bar message print karna h . ek bar print karne ke bad htane ke liye niche wala line -->
+  							<!-- using the function 'removeMessageFromSession()' to remove the message-->
+  							
+  							<th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+  							
+						</div>
+						
+						<div class="container text-center">
+							<img style="width:60px;" src="" th:src="@{/img/membership.png}" alt="" />
+						</div>
+
+						<h1 class="text-center">Register Here !!</h1>
+
+						<!-- form submit karne ke bad 'do_register' wala url chalega then us url se assocaiated page khul jayega-->
+						<!-- ek handler bnayene iske liye with method = 'post' ,'user': obj of User' jo hm bhej rhe usko reference karega -->
+						<form action="" novalidate th:action="@{/do_register}" method="post" th:object="${user}">
+
+						<!-- copied this syntax from bootstrap -->
+						<!-- name field -->
+						<div class="form-group" >
+							<label for="name_field">Your Name</label>
+							
+							<input
+							name ="name"
+							type="text" 
+							class="form-control"
+							th:classappend="${#fields.hasErrors('name') ? 'is-invalid': ''}" 
+							id="name_field"
+							aria-describedby="emailHelp" 
+							placeholder="Enter Name"
+							th:value = "${user.name}"
+							required 
+							/>
+							<!-- data agar kuch pass karte h to ho show karna chahiye 
+							 and above one 'name'' is just the attribute of class 'user' (page se data le jane ke liye)-->
+							
+							<div class="invalid-feedback" th:each="e: ${#fields.errors('name')}" th:text="${e}" >
+      							
+      						</div>
+							
+						</div>
+						
+						
+						<!-- email field -->
+						<div class="form-group" >
+							<label for="email_field">Your Email</label>
+							
+							<input 
+							name="email"
+							type="email" 
+							class="form-control" 
+							th:classappend="${#fields.hasErrors('name') ? 'is-invalid': ''}" 
+							id="email_field"
+							aria-describedby="emailHelp" 
+							placeholder="Enter Email"
+							th:value = "${user.email}"
+							required
+							/>
+							
+							<div class="invalid-feedback" th:each="e: ${#fields.errors('email')}" th:text="${e}" >
+
+						</div>
+						
+						
+						<!-- password field -->
+						<div class="form-group" >
+							<label for="password_field">Your Password</label>
+							
+							<input
+							name="password"
+							type="password" 
+							class="form-control" 
+							th:classappend="${#fields.hasErrors('password') ? 'is-invalid': ''}" 
+							id="password_field"
+							aria-describedby="emailHelp" 
+							placeholder="Enter password" 
+							required
+							/>
+							
+							<div class="invalid-feedback" th:each="e: ${#fields.errors('password')}" th:text="${e}" >
+							
+						</div>
+	
+					<!-- About yourself textarea field -->
+					<div class="form-group">
+						<!-- th:value = "${user.about}"  -->
+						<textarea name="about" th:text = "${user.about}" placeholder= "Enter about yourself" rows="5" class="form-control"></textarea>
+						
+					</div>
+					
+					<!-- Terms and condition agreement -->
+					
+					<div class="form-group form-check text-center">
+						
+						<input
+						name ="agreement"
+						type="checkbox"
+						class="form-check-input"
+						id = "agreement"
+						/>
+						
+						<label for="agreement">Accept terms and conditions</label>
+							
+					</div>
+					
+					<!-- Submit and Reset button at bottom -->
+					<div class="container text-center">
+
+						<button type="submit" class="btn bg-primary text-white">
+							Submit
+						</button>
+						
+						<button type="reset" class=" btn btn-warning ">
+							Reset
+						
+						</button> 
+
+						
+					</div>
+					
+					</form>
+					
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+</body>
+
+</html>
