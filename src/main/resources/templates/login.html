@@ -29,6 +29,10 @@
 									successfully logged out!
 								</div>
 								
+								<div th:if="${param.change}" class="alert alert-success">
+									<p th:text="${param.change}"></p>
+								</div>
+								
 								<div class="form-group">
 									<label for="username" class="text-info">Username:</label><br>
 									<input type="text" name="username" id="username" class="form-control">

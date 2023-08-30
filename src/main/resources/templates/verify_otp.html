@@ -18,7 +18,19 @@
   								OTP sent to your email...
 							</div>
 							
-							<form action="" th:action="@{/send-otp}" method="post">
+							<!-- message box -->
+							<div th:if="${session.message}"  class="container">
+								<div class="alert alert-danger my-2 text-center" role="alert">
+									<span th:text="${session.message}"></span>
+								</div>
+
+								<!-- ek hi bar message print karna h . ek bar print karne ke bad htane ke liye niche wala line -->
+								<!-- using the function 'removeMessageFromSession()' to remove the message-->
+
+								<th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+							</div>
+							
+							<form action="" th:action="@{/verify-otp}" method="post">
 								
 								<div class="form-group">
 									
